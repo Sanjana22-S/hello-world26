@@ -1,31 +1,22 @@
 pipeline {
-  agent any
+  agent {
+    docker { image 'python:3.10' }
+  }
   stages {
-    stage('git repo') {
-      steps {
-        git 'https://github.com/Sanjana22-S/hello-world26.git'
-      }
+    stage('Checkout') {
+      steps { git 'https://github.com/Sanjana22-S/hello-world26.git' }
     }
     stage('Dependencies') {
-      steps {
-        sh 'python3 -m pip install -r requirements.txt'
-      }
+      steps { sh 'pip install -r requirements.txt' }
     }
     stage('Test') {
-      steps {
-        sh 'pytest test.py'
-      }
+      steps { sh 'pytest test.py' }
     }
     stage('Build') {
-      steps {
-        sh 'tar -czf hello-world.tar.gz *'
-      }
+      steps { sh 'tar -czf hello-world.tar.gz *' }
     }
     stage('Archive') {
-      steps {
-        archiveArtifacts artifacts: 'hello-world.tar.gz', fingerprint: true
-      }
+      steps { archiveArtifacts artifacts: 'hello-world.tar.gz', fingerprint: true }
     }
   }
 }
-
