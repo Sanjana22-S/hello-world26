@@ -10,7 +10,7 @@ stages {
     stage('Checkout') {
         steps {
             git branch: 'main',
-                url: 'https://github.com/your-org/flask-app.git'
+                url: 'https://github.com/Sanjana22-S/hello-world26.git'
         }
     }
 
