@@ -1,7 +1,7 @@
 pipeline {
 agent any
 environment {
-    IMAGE_NAME = "your-dockerhub-user/flask-app"
+    IMAGE_NAME = "sanjanas22 /project2-app"
     IMAGE_TAG = "${BUILD_NUMBER}"
 }
 
@@ -50,3 +50,4 @@ post {
     }
 }
 }
+
